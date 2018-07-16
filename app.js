@@ -33,19 +33,20 @@ client.on("guildDelete", guild => {
 client.on("message", async message => {
   var txt = message.content.split(' ');
   for(i = 0; i < txt.length; i++){
+    
     var item = txt[i];
     var bool = false;
     var url;
-    if(item.size > 3 && (item.indexOf("/r/") == 0 || item.indexOf("/u/") == 0)){
+    if(item.length > 3 && (item.indexOf("/r/") == 0 || item.indexOf("/u/") == 0)){
       bool = true;
       url = "https://www.reddit.com" + item;
     }
-    else if(item.size > 3 && (item.indexOf("r/") == 0 || item.indexOf("u/") == 0)){
+    else if(item.length > 3 && (item.indexOf("r/") == 0 || item.indexOf("u/") == 0)){
       bool = true;
       url = "https://www.reddit.com/" + item;
     }
     if(bool){
-      message.reply("Sorry to interrupt, but I noticed you mentioned a subreddit or Reddit user. Here's the link below. **If you want this to stop, please remove the bot from the server, or ask the admins to do so.** \n" + url);
+      message.reply("Sorry to interrupt, but I noticed you mentioned a subreddit or Reddit user. Here's the link below. *If you want this to stop, please remove the bot from the server, or ask the admins to do so.* \n\n" + url);
     }
   }
 });
